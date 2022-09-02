@@ -10,7 +10,7 @@
 
 ---
 
-[Bilibili视频](https://www.bilibili.com/video/BV1je4y1o7yX/)
+[Bilibili视频](https://www.bilibili.com/medialist/play/3629556)
 
 **Let`s go**
 
