@@ -10,6 +10,8 @@
 
 ---
 
+[Bilibili视频](https://www.bilibili.com/video/BV1je4y1o7yX/)
+
 **Let`s go**
 
 1. [a01 hello world](./a01/a01-hello.md)

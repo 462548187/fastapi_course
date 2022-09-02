@@ -12,7 +12,8 @@ from fastapi import Body, Cookie, FastAPI, Header, Path, Query
 from fastapi.openapi.docs import get_redoc_html, get_swagger_ui_html
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
-from starlette.requests import Request
+from fastapi import Request
+
 
 app = FastAPI(docs_url=None, redoc_url=None)
 
@@ -111,7 +112,7 @@ async def get_cookie_param(param: str = Cookie(None, alias="CocaCola", descripti
     return {"param": param}
 
 
-@app.get("/req", summary="request 对象")
+@app.get("/echo", summary="request 对象")
 async def get_request(req: Request):
     print(req)
     return {
