@@ -21,5 +21,4 @@
 5. [a05 依赖的基本使用与嵌套](./a05/a05-Depends.md)
 6. [a06 路径操作装饰器依赖项](./a06/a06-router-Depends.md)
 7. [a07 把一个类作为依赖项来使用](a07/readme.md)
-8. [a08 实现一个简单的登陆功能](a08/readme.md)
-9. [a09 登陆功能优化](./a09/readme.md)
+8. [a08 注册登陆用户中心 - 三连](a08/readme.md)
