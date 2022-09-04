@@ -42,4 +42,4 @@ async def redoc_html():
 
 
 app.include_router(user_router)
-app.include_router(profile_router,deprecated=True)
+app.include_router(profile_router, deprecated=True)

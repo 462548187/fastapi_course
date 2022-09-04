@@ -1,7 +1,6 @@
 # 把一个类作为依赖项来使用
+
 > 可配置，更灵活
-
-
 
 ```python
 class FolderMaker:

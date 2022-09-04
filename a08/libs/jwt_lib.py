@@ -17,7 +17,7 @@ class Token:
     @staticmethod
     def decode(token: str):
         print(token)
-        token = token.replace("\\","")
+        token = token.replace("\\", "")
         payload = json.loads(token[::-1])
         if not isinstance(payload, dict):
             raise ValueError("payload 格式错误")

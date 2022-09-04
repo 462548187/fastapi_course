@@ -6,7 +6,7 @@
 
 - 问号后面的内容
 
-- post 的 form  body
+- post 的 form body
 
 - cookie
 
@@ -81,7 +81,7 @@ def post_body_list(p: List[Car] = Body(...)):
 ```
 
 > 此外，还有嵌套、Set等，这里不再赘述了，小伙伴们可以自己查阅文档
-> 
+>
 > [请求体 - 嵌套模型 - FastAPI](https://fastapi.tiangolo.com/zh/tutorial/body-nested-models/#_1)
 
 2. Form

@@ -34,13 +34,14 @@ async def redoc_html():
             openapi_url=app.openapi_url,
             title=app.title + " - ReDoc",
             redoc_js_url="/static/redoc/redoc.standalone.js")
+
+
 # </editor-fold>
 
 
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
-
 
 
 if __name__ == '__main__':

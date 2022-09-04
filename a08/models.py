@@ -30,8 +30,8 @@ class UserSignUp(BaseModel):
 
 
 class UserLogin(BaseModel):
-    username: str= Field(..., example="tom")
-    password: str= Field(..., example="123")
+    username: str = Field(..., example="tom")
+    password: str = Field(..., example="123")
 
 
 class UserInfo(BaseModel):

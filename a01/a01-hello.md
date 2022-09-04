@@ -10,7 +10,7 @@ pip install fastapi
 pip install fastapi[all]
 ```
 
->  [可选依赖的具体内容](https://fastapi.tiangolo.com/zh/#_12 "Permanent link")
+> [可选依赖的具体内容](https://fastapi.tiangolo.com/zh/#_12 "Permanent link")
 
 ## hello world
 

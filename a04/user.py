@@ -11,10 +11,12 @@ from fastapi import APIRouter, Path
 
 router = APIRouter(prefix='/user', tags=['用户管理'])
 
+
 # /user
 @router.get("", summary="查看用户列表")
 def get_user_list():
     return 'user_list'
+
 
 # /user/2
 @router.get("/{uid}", summary="查看指定用户")
