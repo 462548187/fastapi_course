@@ -37,5 +37,5 @@ def auth_depend(token: str = Depends(oauth2_scheme)):
     username = payload.get("username")
     user = db.get_or_none(username)
     if user is None:
-        return {"msg": "认证不通过"}
+        raise HTTPException(status_code=401, detail="认证不通过")
     return user
