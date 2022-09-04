@@ -6,9 +6,8 @@
 # File:    hello.py
 # Project: fastapi_course
 # IDE:     PyCharm
-import traceback
 
-from fastapi import Body, Depends, FastAPI, Header
+from fastapi import Body, Depends, FastAPI
 from fastapi.openapi.docs import get_redoc_html, get_swagger_ui_html
 from fastapi.security import OAuth2PasswordRequestForm
 from fastapi.staticfiles import StaticFiles
@@ -17,7 +16,7 @@ from a08.auth import auth_depend
 from a08.libs.db_lib import db
 from a08.libs.hash_lib import hash_tool
 from a08.libs.jwt_lib import token_tool
-from a08.models import UserInDB, UserInfo, UserLogin, UserSignUp
+from a08.models import UserInDB, UserInfo, UserSignUp
 
 app = FastAPI(docs_url=None, redoc_url=None)
 
@@ -73,7 +72,7 @@ def signup(form_data: UserSignUp = Body(...)):
 
 @app.post("/login", summary="登陆接口")
 def login(form_data: OAuth2PasswordRequestForm = Depends()):
-# def login(form_data: UserLogin = Body(...)):
+    # def login(form_data: UserLogin = Body(...)):
     # 第一步 拿到 用户名 和密码 ，校验
     username = form_data.username
     password = form_data.password
@@ -94,11 +93,11 @@ def login(form_data: OAuth2PasswordRequestForm = Depends()):
 
 
 @app.get("/me", summary="个人信息")
-def get_my_info(me:UserInDB= Depends(auth_depend)):
+def get_my_info(me: UserInDB = Depends(auth_depend)):
     user_info = UserInfo(**me.dict())
     return {"msg": user_info}
 
-@app.get("/vip", summary="查看 VIP 信息",dependencies=[Depends(auth_depend)])
-def get_vip_info():
-    return {"msg":"vip info"}
 
+@app.get("/vip", summary="查看 VIP 信息", dependencies=[Depends(auth_depend)])
+def get_vip_info():
+    return {"msg": "vip info"}
