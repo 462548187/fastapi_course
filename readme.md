@@ -10,7 +10,7 @@
 
 ---
 
-[Bilibili视频](https://www.bilibili.com/medialist/play/3629556)
+[Bilibili视频](https://www.bilibili.com/medialist/play/3629556?from=space&business=space_series&business_id=2599372&desc=0)
 
 **Let`s go**
 
