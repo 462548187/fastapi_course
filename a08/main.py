@@ -12,10 +12,10 @@ from fastapi.openapi.docs import get_redoc_html, get_swagger_ui_html
 from fastapi.security import OAuth2PasswordRequestForm
 from fastapi.staticfiles import StaticFiles
 
-from a08.auth import auth_depend
+from a08.auth import auth_depend, create_access_token
+from a08.config import settings
 from a08.libs.db_lib import db
 from a08.libs.hash_lib import hash_tool
-from a08.libs.jwt_lib import token_tool
 from a08.models import UserInDB, UserInfo, UserSignUp
 
 app = FastAPI(docs_url=None, redoc_url=None)
@@ -71,8 +71,11 @@ def signup(form_data: UserSignUp = Body(...)):
 
 
 @app.post("/login", summary="登陆接口")
-def login(form_data: OAuth2PasswordRequestForm = Depends()):
-    # def login(form_data: UserLogin = Body(...)):
+def login():
+    return {"msg": "login"}
+
+
+def get_token(form_data: OAuth2PasswordRequestForm = Depends()):
     # 第一步 拿到 用户名 和密码 ，校验
     username = form_data.username
     password = form_data.password
@@ -85,12 +88,14 @@ def login(form_data: OAuth2PasswordRequestForm = Depends()):
         return {"msg": "登陆失败，用户名与密码不匹配"}
     # 第四步 生成 token
     # Authorization: bearer header.payload.sign
-    token = token_tool.encode({"username": username})
-
+    token = create_access_token({"username": username})
     # 给前端响应信息
     # return {"token": f"bearer {token}"}
     return {"access_token": token, "token_type": "bearer"}
 
+
+if settings.debug:
+    app.post("/token", summary="获取 token 接口")(login)
 
 @app.get("/me", summary="个人信息")
 def get_my_info(me: UserInDB = Depends(auth_depend)):
