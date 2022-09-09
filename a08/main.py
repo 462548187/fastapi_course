@@ -95,7 +95,7 @@ def get_token(form_data: OAuth2PasswordRequestForm = Depends()):
 
 
 if settings.debug:
-    app.post("/token", summary="获取 token 接口")(login)
+    app.post("/token", summary="获取 token 接口")(get_token)
 
 @app.get("/me", summary="个人信息")
 def get_my_info(me: UserInDB = Depends(auth_depend)):
