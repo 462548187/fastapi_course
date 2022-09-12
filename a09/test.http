@@ -1,0 +1,10 @@
+GET http://localhost:8000/
+
+
+###
+POST http://localhost:8000/hi?q=abc
+Content-Type: application/json
+
+{
+    "data": "123"
+}
