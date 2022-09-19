@@ -10,7 +10,7 @@
 
 ---
 
-[Bilibili视频](https://www.bilibili.com/medialist/play/3629556?from=space&business=space_series&business_id=2599372&desc=0)
+[FastAPI 快速上手指南 - Bilibili视频](https://www.bilibili.com/video/BV1je4y1o7yX?vd_source=9f8f3da95270c6c4d6bafbe8da14beee)
 
 **Let`s go**
 
