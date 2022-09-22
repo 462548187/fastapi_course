@@ -34,7 +34,7 @@ def auth_depend(token: str = Depends(oauth2_scheme)):
     # 1. 解析 token 中的 payload 信息
     try:
         payload = jwt.decode(token, settings.jwt_secret_key, algorithms=[settings.jwt_algorithm])
-    except  JWTError:
+    except JWTError:
         exc_msg = '\n' + "-" * 40 + "  catch some exceptions  " + "-" * 40 + '\n'
         exc_msg += traceback.format_exc() + '\n'
         local_vars = locals()

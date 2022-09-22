@@ -1,3 +1,6 @@
 fastapi[all]==0.81.0
 passlib==1.7.4
 python-jose[cryptography]==3.3.0
+tortoise-orm[aiomysql]==0.19.2
+aioredis[hiredis]==2.0.1
+aerich==0.6.3

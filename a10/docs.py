@@ -28,4 +28,4 @@ async def custom_redoc_html(req: Request):
 
 def custom_docs(app: FastAPI):
     app.get("/docs", include_in_schema=False)(custom_swagger_ui_html)
-    app.get("/docs", include_in_schema=False)(custom_redoc_html)
+    app.get("/redoc", include_in_schema=False)(custom_redoc_html)
