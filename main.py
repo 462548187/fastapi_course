@@ -1,4 +1,4 @@
 import uvicorn
 
 if __name__ == '__main__':
-    uvicorn.run("temp.main:app", reload=True)
+    uvicorn.run("a08.main:app", reload=True)

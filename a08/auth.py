@@ -6,7 +6,6 @@
 # File:    auth.py
 # Project: fastapi_course
 # IDE:     PyCharm
-import traceback
 from datetime import datetime, timedelta
 
 from fastapi import Depends, HTTPException
@@ -18,7 +17,9 @@ from a08.libs.db_lib import db
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
+from logging import getLogger
 
+logger = getLogger(__name__)
 def create_access_token(data: dict, expires_delta: timedelta | None = None) -> str:
     to_encode = data.copy()
     if expires_delta:
@@ -35,13 +36,7 @@ def auth_depend(token: str = Depends(oauth2_scheme)):
     try:
         payload = jwt.decode(token, settings.jwt_secret_key, algorithms=[settings.jwt_algorithm])
     except JWTError:
-        exc_msg = '\n' + "-" * 40 + "  catch some exceptions  " + "-" * 40 + '\n'
-        exc_msg += traceback.format_exc() + '\n'
-        local_vars = locals()
-        del local_vars['exc_msg']
-        exc_msg += f"{local_vars=}" + '\n'
-        exc_msg += "-" * 100
-        print(exc_msg)
+        logger.error("token解码失败", exc_info=True)
         raise HTTPException(status_code=401, detail="token已失效，请重新登陆！")
     # 2. 根据 payload 中的信息去数据库中找到对应的用户
     username = payload.get("username")
