@@ -13,13 +13,11 @@ from fastapi import Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer
 from jose import jwt, JWTError
 
-from a08.config import settings
-from a08.libs.db_lib import db
-
-# from loguru import logger
+from ..config import settings
+from ..libs.db_lib import db
 
 logger = getLogger(__name__)
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl=settings.swagger_ui_oauth2_redirect_url)
 
 
 def create_access_token(data: dict, expires_delta: timedelta | None = None) -> str:
