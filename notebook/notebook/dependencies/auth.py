@@ -10,14 +10,19 @@ from datetime import datetime, timedelta
 from logging import getLogger
 
 from fastapi import Depends, HTTPException
-from fastapi.security import OAuth2PasswordBearer
+from fastapi.security import OAuth2AuthorizationCodeBearer
 from jose import jwt, JWTError
 
 from ..config import settings
 from ..libs.db_lib import db
 
 logger = getLogger(__name__)
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl=settings.swagger_ui_oauth2_redirect_url)
+# oauth2_scheme = OAuth2PasswordBearer(tokenUrl=settings.swagger_ui_token_url)
+
+oauth2_scheme = OAuth2AuthorizationCodeBearer(authorizationUrl=settings.oauth_authorization_url,
+                                              tokenUrl=settings.oauth_token_url,
+                                              scopes={"read": "读取用户信息"}
+                                              )
 
 
 def create_access_token(data: dict, expires_delta: timedelta | None = None) -> str:

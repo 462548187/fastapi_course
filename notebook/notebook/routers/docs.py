@@ -7,8 +7,10 @@
 # Project: notebook
 # IDE:     PyCharm
 from fastapi import APIRouter, Depends, FastAPI
-from fastapi.openapi.docs import get_redoc_html, get_swagger_ui_html
+from fastapi.openapi.docs import get_redoc_html, get_swagger_ui_html, get_swagger_ui_oauth2_redirect_html
 from fastapi.security import OAuth2PasswordRequestForm
+from starlette.requests import Request
+from starlette.responses import HTMLResponse
 
 from ..config import settings
 from ..dependencies import create_access_token
@@ -25,7 +27,13 @@ def custom_docs(application: FastAPI):
                 title=application.title + " - Swagger UI",
                 oauth2_redirect_url=application.swagger_ui_oauth2_redirect_url,
                 swagger_js_url="/static/swagger/swagger-ui-bundle.js",
-                swagger_css_url="/static/swagger/swagger-ui.css")
+                swagger_css_url="/static/swagger/swagger-ui.css",
+                init_oauth=application.swagger_ui_init_oauth,
+                swagger_ui_parameters=application.swagger_ui_parameters,
+                )
+
+    async def swagger_ui_redirect(req: Request) -> HTMLResponse:
+        return get_swagger_ui_oauth2_redirect_html()
 
     async def redoc_html():
         return get_redoc_html(
@@ -54,6 +62,9 @@ def custom_docs(application: FastAPI):
     if settings.debug:
         application.get("/docs", include_in_schema=False)(custom_swagger_ui_html)
         application.get("/redoc", include_in_schema=False)(redoc_html)
-        application.post(settings.swagger_ui_oauth2_redirect_url,
+        application.post(settings.swagger_ui_token_url,
                          summary="获取 token 接口",
                          tags=['获取 token 接口'])(get_token)
+
+        application.add_route(application.swagger_ui_oauth2_redirect_url,
+                              swagger_ui_redirect, include_in_schema=False, )

@@ -21,6 +21,14 @@ class Settings(BaseSettings):
     # debug模式
     debug: bool = True
 
+    # oauth 配置
+    oauth_authorization_url: str = 'http://127.0.0.1:8888/oauth/authorize'
+    oauth_token_url: str = 'http://127.0.0.1:8888/oauth/token'
+    oauth_profile_url: str = 'http://127.0.0.1:8888/oauth/profile'
+    oauth_client_id: str = '123'
+    oauth_client_secret: str = 'abc'
+    oauth_redirect_uri: str = '/callback'
+
     # jwt加密的 key
     jwt_secret_key: str = "abcdefghijklmn"
     # jwt加密算法
@@ -39,10 +47,11 @@ class Settings(BaseSettings):
     url_prefix: str = "/api/v1"
     # host
     server_host: str = 'localhost'
-    server_port: int = 8000
+    server_port: int = 8080
 
     #  swagger docs 的登陆重定向地址
-    swagger_ui_oauth2_redirect_url: str = url_prefix + '/test/token'
+    swagger_ui_oauth2_redirect_url: str = '/callback'
+    swagger_ui_token_url: str = url_prefix + '/test/token'
 
     # 项目根目录
     base_dir = Path(__file__).absolute().parent.parent.parent
@@ -54,3 +63,5 @@ class Settings(BaseSettings):
     # 用户上传目录
     media_dir = base_dir / 'media'
     media_url_prefix: str = '/media'
+    # jinja2 模板目录
+    jinja2_templates_dir = base_dir / 'notebook' / 'templates'
