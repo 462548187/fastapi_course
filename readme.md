@@ -10,18 +10,6 @@
 
 ---
 
-[FastAPI 快速上手指南 - Bilibili视频](https://www.bilibili.com/video/BV1je4y1o7yX?vd_source=9f8f3da95270c6c4d6bafbe8da14beee)
-
-## 技术交流群
-
-> 本群啥都可以聊Python，fastapi，js，vue，运维，数据库，人生，未来，感情.....，严禁开车，严禁广告，一次警告，两次拜拜！
-
-![wechat](./assets/wechat.jpg)
-
-**如果二维码过期，可以通过各种途径通知我**
-
----
-
 ## 笔记目录
 
 **Let`s go**
